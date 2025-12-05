@@ -1,4 +1,5 @@
 plugins {
+    id 'war'
     id 'java'
     id 'io.freefair.lombok' version '9.0.0'
 }
@@ -32,4 +33,8 @@ java {
 
 test {
     useJUnitPlatform()
+}
+
+war {
+    archiveFileName = 'ROOT.war'
 }
