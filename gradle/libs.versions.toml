@@ -1,5 +1,6 @@
 [versions]
 hibernate = "7.1.11.Final"
+postgresql = "42.7.8"
 
 junit = "6.0.1"
 mockito = "5.20.0"
@@ -8,6 +9,7 @@ assertj = "3.27.6"
 
 [libraries]
 hibernate-core = { module = "org.hibernate.orm:hibernate-core", version.ref = "hibernate" }
+postgresql-driver = { module = "org.postgresql:postgresql", version.ref = "postgresql" }
 
 junit-bom = { module = "org.junit:junit-bom", version.ref = "junit" }
 junit-jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api" }

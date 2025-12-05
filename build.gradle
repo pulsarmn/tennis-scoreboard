@@ -16,6 +16,7 @@ repositories {
 
 dependencies {
     implementation libs.hibernate.core
+    implementation libs.postgresql.driver
 
     testImplementation platform(libs.junit.bom)
     testRuntimeOnly libs.bundles.junit.runtime
