@@ -19,6 +19,8 @@ dependencies {
     compileOnly libs.servlet.api
     implementation libs.hibernate.core
 
+    implementation libs.thymeleaf.core
+
     testImplementation platform(libs.junit.bom)
     testRuntimeOnly libs.bundles.junit.runtime
     testImplementation libs.bundles.junit.jupiter
