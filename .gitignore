@@ -1,0 +1,6 @@
+.gradle
+
+build
+.idea/
+
+src/main/java/org/pulsar/scoreboard/Main.java
