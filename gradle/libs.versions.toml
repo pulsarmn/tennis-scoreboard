@@ -1,5 +1,6 @@
 [versions]
 servlet-api = "6.1.0"
+jedis = "7.1.0"
 postgresql = "42.7.8"
 hibernate = "7.1.11.Final"
 
@@ -12,6 +13,7 @@ assertj = "3.27.6"
 
 [libraries]
 servlet-api = { module = "jakarta.servlet:jakarta.servlet-api", version.ref = "servlet-api" }
+jedis = { module = "redis.clients:jedis", version.ref = "jedis" }
 postgresql-driver = { module = "org.postgresql:postgresql", version.ref = "postgresql" }
 hibernate-core = { module = "org.hibernate.orm:hibernate-core", version.ref = "hibernate" }
 
