@@ -22,6 +22,7 @@ dependencies {
     implementation libs.hibernate.core
 
     implementation libs.thymeleaf.core
+    implementation libs.jackson.databind
 
     testImplementation platform(libs.junit.bom)
     testRuntimeOnly libs.bundles.junit.runtime
