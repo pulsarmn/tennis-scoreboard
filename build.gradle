@@ -17,6 +17,7 @@ repositories {
 
 dependencies {
     compileOnly libs.servlet.api
+    implementation libs.postgresql.driver
     implementation libs.hibernate.core
 
     implementation libs.thymeleaf.core
