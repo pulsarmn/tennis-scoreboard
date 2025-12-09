@@ -1,4 +1,5 @@
 [versions]
+servlet-api = "6.1.0"
 hibernate = "7.1.11.Final"
 junit = "6.0.1"
 mockito = "5.20.0"
@@ -6,6 +7,7 @@ assertj = "3.27.6"
 
 
 [libraries]
+servlet-api = { module = "jakarta.servlet:jakarta.servlet-api", version.ref = "servlet-api" }
 hibernate-core = { module = "org.hibernate.orm:hibernate-core", version.ref = "hibernate" }
 
 junit-bom = { module = "org.junit:junit-bom", version.ref = "junit" }
