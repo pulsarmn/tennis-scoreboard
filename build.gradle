@@ -17,9 +17,12 @@ repositories {
 
 dependencies {
     compileOnly libs.servlet.api
+    implementation libs.jedis
+    runtimeOnly libs.postgresql.driver
     implementation libs.hibernate.core
 
     implementation libs.thymeleaf.core
+    implementation libs.jackson.databind
 
     testImplementation platform(libs.junit.bom)
     testRuntimeOnly libs.bundles.junit.runtime
