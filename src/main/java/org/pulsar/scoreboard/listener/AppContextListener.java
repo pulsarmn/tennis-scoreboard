@@ -25,6 +25,9 @@ public class AppContextListener implements ServletContextListener {
 
         TemplateEngine templateEngine = createTemplateEngine(context);
         context.setAttribute("templateEngine", templateEngine);
+
+        SessionFactory sessionFactory = createSessionFactory();
+        context.setAttribute("sessionFactory", sessionFactory);
     }
 
     private TemplateEngine createTemplateEngine(ServletContext context) {
