@@ -1,19 +1,21 @@
 <?xml version='1.0' encoding='utf-8'?>
 <!DOCTYPE hibernate-configuration PUBLIC
-    "-//Hibernate/Hibernate Configuration DTD//EN"
-    "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
-  <session-factory>
-    <property name="connection.url"/>
-    <property name="connection.driver_class"/>
+    <session-factory>
+        <property name="connection.url"/>
+        <property name="connection.driver_class"/>
 
-    <property name="hibernate.connection.url">jdbc:postgresql://localhost:5445/database</property>
-    <property name="hibernate.connection.username">pulsar</property>
-    <property name="hibernate.connection.password">12345678</property>
-    <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
-    <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5445/database</property>
+        <property name="hibernate.connection.username">pulsar</property>
+        <property name="hibernate.connection.password">12345678</property>
+        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
 
-    <property name="hibernate.show_sql">true</property>
-    <property name="hibernate.format_sql">true</property>
-  </session-factory>
+        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.format_sql">true</property>
+
+        <property name="hibernate.current_session_context_class">thread</property>
+    </session-factory>
 </hibernate-configuration>
