@@ -4,6 +4,10 @@ import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletContextEvent;
 import jakarta.servlet.ServletContextListener;
 import jakarta.servlet.annotation.WebListener;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+import org.pulsar.scoreboard.model.Match;
+import org.pulsar.scoreboard.model.Player;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.templateresolver.ITemplateResolver;
 import org.thymeleaf.templateresolver.WebApplicationTemplateResolver;
@@ -41,5 +45,15 @@ public class AppContextListener implements ServletContextListener {
         templateResolver.setCacheable(true);
 
         return templateResolver;
+    }
+
+    private SessionFactory createSessionFactory() {
+        Configuration configuration = new Configuration();
+
+        configuration.addAnnotatedClass(Player.class);
+        configuration.addAnnotatedClass(Match.class);
+        configuration.configure("hibernate.cfg.xml");
+
+        return configuration.buildSessionFactory();
     }
 }
