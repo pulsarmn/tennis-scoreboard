@@ -55,4 +55,13 @@ public class MatchScoreService {
                 .secondPlayer(secondPlayer)
                 .build();
     }
+
+    public MatchScore get(String matchId) {
+        try {
+            UUID id = UUID.fromString(matchId);
+            return matchStorage.get(id);
+        } catch (Exception e) {
+            throw new IllegalArgumentException(e);
+        }
+    }
 }
