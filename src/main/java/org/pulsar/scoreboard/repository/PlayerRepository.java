@@ -40,4 +40,17 @@ public class PlayerRepository {
             throw new DatabaseException(e);
         }
     }
+
+    public void save(Player player) {
+        Session session = sessionFactory.getCurrentSession();
+        try {
+            log.info("Saving player with name '{}'", player.getName());
+            session.persist(player);
+            session.flush();
+            log.info("Player with name '{}' has been successfully saved", player.getName());
+        } catch (HibernateException e) {
+            log.error("Error while saving player with name '{}'", player.getName());
+            throw new DatabaseException(e);
+        }
+    }
 }
