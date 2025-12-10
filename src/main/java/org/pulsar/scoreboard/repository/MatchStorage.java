@@ -24,4 +24,18 @@ public class MatchStorage {
         String jsonMatch = objectMapper.writeValueAsString(matchScore);
         jedis.set(matchId.toString(), jsonMatch);
     }
+
+    public MatchScore get(UUID matchId) {
+        if (matchId == null) {
+            return null;
+        }
+
+        String jsonMatch = jedis.get(matchId.toString());
+        try {
+            return objectMapper.readValue(jsonMatch, MatchScore.class);
+        } catch (Exception e) {
+            // TODO: handle exception normally
+            return null;
+        }
+    }
 }
