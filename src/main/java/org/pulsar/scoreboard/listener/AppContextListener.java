@@ -8,10 +8,16 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.pulsar.scoreboard.model.Match;
 import org.pulsar.scoreboard.model.Player;
+import org.pulsar.scoreboard.repository.MatchStorage;
+import org.pulsar.scoreboard.repository.PlayerRepository;
+import org.pulsar.scoreboard.service.MatchScoreService;
+import org.pulsar.scoreboard.service.PlayerService;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.templateresolver.ITemplateResolver;
 import org.thymeleaf.templateresolver.WebApplicationTemplateResolver;
 import org.thymeleaf.web.servlet.JakartaServletWebApplication;
+import redis.clients.jedis.Jedis;
+import tools.jackson.databind.ObjectMapper;
 
 import java.nio.charset.StandardCharsets;
 
@@ -25,6 +31,17 @@ public class AppContextListener implements ServletContextListener {
 
         TemplateEngine templateEngine = createTemplateEngine(context);
         context.setAttribute("templateEngine", templateEngine);
+
+        SessionFactory sessionFactory = createSessionFactory();
+        context.setAttribute("sessionFactory", sessionFactory);
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        Jedis jedis = createJedis();
+        MatchStorage matchStorage = new MatchStorage(jedis, objectMapper);
+        PlayerRepository playerRepository = new PlayerRepository(sessionFactory);
+        PlayerService playerService = new PlayerService(playerRepository);
+        MatchScoreService matchScoreService = new MatchScoreService(matchStorage, playerService);
+        context.setAttribute("matchScoreService", matchScoreService);
     }
 
     private TemplateEngine createTemplateEngine(ServletContext context) {
@@ -55,5 +72,9 @@ public class AppContextListener implements ServletContextListener {
         configuration.configure("hibernate.cfg.xml");
 
         return configuration.buildSessionFactory();
+    }
+
+    private Jedis createJedis() {
+        return new Jedis("localhost", 6379);
     }
 }
